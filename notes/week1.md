@@ -76,10 +76,10 @@ addMe x y = x + y
 
 ### Guards
 ```haskell
-	funcName :: Int -> Bool
-	funcName n
-		| n `mod`2 == 0 = False # return false if even
-		| otherwise = True
+funcName :: Int -> Bool
+funcName n
+	| n `mod`2 == 0 = False # return false if even
+	| otherwise = True
 ```
 - You can include functions within some or all guards bu using a `where` clause: same indent as the last guard, but no guard bar. `where fname = operations`
 
