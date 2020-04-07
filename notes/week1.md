@@ -4,7 +4,7 @@
 
 ```haskell
 main = do
-	...
+	--...
 ```
 
 ### General
@@ -68,19 +68,19 @@ main = do
 
 ### Functions
 - `let funcname x = x^9` will return the ninth power of the number provided.
-- ```haskell
+```haskell
 addMe :: Int -> Int -> Int
 addMe x y = x + y
 ```
 - blank argument `fname _ = 1337` will return `1337` no matter input
 
 ### Guards
-- ```haskell
+```haskell
 	funcName :: Int -> Bool
 	funcName n
 		| n `mod`2 == 0 = False # return false if even
 		| otherwise = True
-	```
+```
 - You can include functions within some or all guards bu using a `where` clause: same indent as the last guard, but no guard bar. `where fname = operations`
 
 ### Higher Order Functions
@@ -97,13 +97,15 @@ listt4 = map t4 [1..10]
 - Defined using the notation: `outer = map (\x -> x * 2) [1..10]` will perform the unnamed function `x -> x * 2` on each element of `1..10` using map.
 
 ### Conditional Structures
-- if statement: ```haskell
+- if statement: 
+```haskell
 funcName a = 
 	if (condition)
 		then b
 		else c
 ```
-- case statement: ```haskell
+- case statement: 
+```haskell
 funcName :: Int -> String
 funcName n= case n of
 	a -> b
@@ -114,14 +116,16 @@ funcName n= case n of
 
 ### Type Things
 #### Enumerated Types
-- ```haskell
-data TypeName = val1 | val2 | ... | valn```
+```haskell
+data TypeName = val1 | val2 | ... | valn
+```
 - can be followed by `deriving Show` to ne able to use as string
 
 #### Custom Types
-- ```haskell
+```haskell
 data Name = Name t1 t2 ... tn
-	deriving show```
+	deriving show
+```
 - Instantiate with `varName = Name val1 ... valn`
 - retrieve information with a function like ```haskell
 get3rd :: Name -> outType
@@ -129,11 +133,12 @@ get3rd (Name _ _ a) = a
 ```
 
 #### Custom + Enumerated Types
-- ```haskell
+```haskell
 data Shape = Circle Float Float Float | Rectangle Float Float Float Float
 	deriving Show
 ```
-- This can be used by defining functions that depend on type passed: ```haskell
+- This can be used by defining functions that depend on type passed: 
+```haskell
 area (Circle _ _ r) = pi * r ^ 2
 area (Rectangle a b c d ) = #...
 ```
@@ -142,13 +147,15 @@ area (Rectangle a b c d ) = #...
 - i.e. `Num`, `Eq`, `Show`
 - Correspond to sets of types with defined functions
 	- ex: `Num` type class is used for `(+)` operator
-- defining new type with classes: ```haskell
+- defining new type with classes: 
+```haskell
 data Name = Name { var :: type,
 					...
 				  	varn :: typen} deriving (Classes)
 ```
 - above, the `Classes` can be type classes that can be used with this type. These can be like `Eq`, `Show` ...
-- Using Type Enumeration and overriding builtin type class: ```haskell
+- Using Type Enumeration and overriding builtin type class: 
+```haskell
 data ShirtSize S | M | L
 instance Eq ShirtSize where
 	S == S = True
@@ -161,7 +168,8 @@ instance Show ShirtSize where
 	show M = "Medium"
 	show L = "Large"
 ```
-- Custom type class: ```haskell
+- Custom type class: 
+```haskell
 data ShirtSize S | M | L
 
 class MyEq where
