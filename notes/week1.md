@@ -60,3 +60,20 @@ addMe x y = x + y
 ```
 - blank argument `fname _ = 1337` will return `1337` no matter input
 
+
+
+
+## Lecture Notes
+
+Where `[Int]` would denote a list of ints, `[a]` denotes a list of anyting.
+
+sum xs + length xs  = 9
+xs ++ length xs     ✗
+xs ++ [length xs]   = [1,2,3,3]
+[sum xs, length xs] = [6,3]
+[xs, length xs]     ✗
+5:xs          = [5,1,2,3]
+xs:5          ✗[
+tail xs,5]   ✗
+[tail xs,[5]] = [[2,3],[5]]
+tail [xs,xs]  = [[1,2,3]]
