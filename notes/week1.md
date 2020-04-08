@@ -1,6 +1,6 @@
-# Lecture 1 Notes
+# Haskell Learning Notes
 
-## Haskell Learning Notes
+### Main Function-like Structure
 
 ```haskell
 main = do
@@ -185,8 +185,3 @@ instance MyEq ShirtSize where
 ### Modules
 - We load modules to get at functions. 
 - defined at top of module file in format `module Name (f1, ..., fn) where` followed by function defenitions.
-
-
-## Lecture Notes
-
-Where `[Int]` would denote a list of ints, `[a]` denotes a list of anyting.
