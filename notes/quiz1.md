@@ -1,4 +1,4 @@
-# Haskell Learning Notes
+# Quiz 1 / Haskell Learning Notes
 
 ### Main Function-like Structure
 
