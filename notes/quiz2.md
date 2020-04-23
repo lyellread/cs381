@@ -81,7 +81,7 @@ instance Show Grade where
 - This will not be on quizzes or tests
 
 ### Grammar
-- Grammar is given by a set of rules / productions
+- Grammar is given by a set of rules == productions
 - production looks like `A ::= B C`, where A makes up the `LHS`, B and C make up the `RHS`, and A, B and C are all symbols, or strings.
 - example grammar
 ```
@@ -108,10 +108,19 @@ verb     ::= have				(R4)
 - can also replace internal nodes with rulenames
 
 ### Abstract vs Concrete Syntax
+#### Concrete Syntax
 - concrete syntax is the set of all sentences or strings that can be developed from a grammar. 
+- it is more verbose, and more readable
+- contains extra keywords and symbols to help parsing
+
+#### Abstract Syntax
 - abstract view is the set of all syntax trees that a grammar can produce
+- more concise
+- represents essential language structure
+- basis for analysis and transformations
 
 ### Abstract Syntax
+- abstract syntax tree is synonimous with the value of a haskell data type.
 - some syntax trees can be reduced, by removing redundant rules, for example a rule where there is only one possible expansion that has start and end that are in the graph, the intermediate node with rule Rn does not need to be present
 - can be represented linearly, in text, where:
 ```
@@ -171,3 +180,145 @@ Cons1 Dogs Have Teeth
 Cons2 (Cons 1 Dogs Have Teeth) (Cons1 Dogs Have Dogs)
 ```
 - `Cons1`, `Cons2` are constructors for nonterminals. They can be called `Phrase` and `And`, `R1` and `R2`, ...
+
+### Abstract Grammar
+- synonymous with Haskell data type
+- contains exactly one unique terminal symbol in each rule, and no redundant rules.
+- for example, taking the concrete grammar below, we can make the abstract grammar:
+```
+Concrete Grammar:
+cond ::= T | not Cond (cond)
+stmt ::= while cond { stmt }
+		| noop
+
+Abstract Grammar:
+data Cond = T | Not Cond
+data Stmt = While Cond Stmt
+		| Noop
+```
+- while a concrete grammar can generage a set of sentences, an abstract one can produce an abstract syntax tree.
+
+### Concrete Syntax Tree
+- created as follows
+```
+Sentence:
+while not(not(T)) {
+	while T { noop }
+}
+
+Grammar
+cond ::= T | not (cond)
+stmt ::= while cond { stmt }
+		| noop
+
+Tree:
+```
+![Image](q2-tree1.png)
+
+### Abstract Syntax Tree
+- for code:
+```hs
+While (Not (Not (T))
+	(While T Noop)
+
+data Cond = T | Not Cond
+data Stmt = While Cond Stmt
+			| Noop
+
+Tree:
+
+       While
+      /     \
+   Not      While
+    |      /     \
+   Not     T     Noop
+    |
+    T
+```
+
+#### CST to AST
+Take the the first terminal of each nonterminal, forget the remaining terminal characters. Replace the nonterminal with the terminal.
+
+### What Makes an Acceptable Data Type for Abstract Syntax
+- must represent all sentences in a language, no more and no less.
+- names and order of arguments to constructors do not matter.
+- one constructor may represent multiple productions.
+- there may be multiple ways to represent one sentence in different ways.
+```
+data Ints = One Int | Join Ints Ints
+
+List [2, 4, 5] can be 
+- Join (One 2) (Join (One 4) (One 5))
+- Join (Join (One 2) (One 4)) (One 5)
+```
+
+### Pretty Printing and Parsing
+- pretty printing abstract syntax creates concrete syntax
+- parsing concrete syntax creates abstract syntax
+
+### Grammar Rules for Lists (Simplifications)
+- a string is a list of characters, i.e. we can condense like this:
+```
+Concrete
+string ::= char string | Є
+char ::= a | b | c ...
+
+create string aac
+
+Abstract
+data Str = Seq Chr Str | Empty
+data Chr = A | B | ...
+
+aac = Seq A (Seq A (Seq C Empty))
+
+But, char array is a string, so abstract syntax can also be either
+
+data Str = Seq [Char] (using builtin char)
+
+or
+
+type String = [Char] (using Char and String builtins)
+```
+- same can happen with numbers.
+- concrete syntax `rule*` means that that rule is a list of that rule, i.e. `rule*` expands to `rule rule* | Є`. This becomes [rule] in abstract.
+- concrete syntax `rule+` means there is at least one instance of that rule. This expands to `As ::= A As | A`, and in abstract becomes either rule or [rule].
+
+### Data Types vs Types
+- difference:
+```hs
+type Point = (Int, Int)
+(3,5) :: Point 		[OK]
+(3,5) :: (Int, Int) [OK]
+-- essentially, Point is the same as (Int, Int).
+```
+- versus
+```hs
+data Point = Pt Int Int
+Pt 3 5 :: Point 	[OK]
+Pt 3 5 :: (Int, Int)[ERROR]
+```
+- data type is used when
+	- more than one constructor is needed
+	- pretty printing is required
+	- representation might be hidden (ADT)
+
+### Grammars to Data Types
+1. represent each **basic nonterminal** as a **built in type**
+2. for each **other nonterminal**, define a **data type**
+3. for each **production**, define a **constructor**
+4. **argument types** of constructors are given by the productions **nonterminals**.
+
+- **Each case of a data type must have a constructor (see `N`, `Plus`, `While`, `Noop` below).**
+
+```hs
+-- exp  ::= num | exp + exp  | (exp)
+-- stmt ::= while exp { stmt }
+--		| noop
+
+data Exp = N Int | Plus Exp Exp
+data Stmt = While Exp Stmt
+		| Noop
+
+-- Num is probably defined somewhere else
+-- exp and stmt are nonterminals, so we make data types for them
+```
