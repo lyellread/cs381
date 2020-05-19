@@ -1,6 +1,6 @@
-+------------+
-| Question 1 |
-+------------+
+# Midterm - CS381
+
+## Question 1
 
 Determine the type/behavior of the following expressions under static and dynamic typing. 
 
@@ -14,9 +14,7 @@ Dynamic: dynamic: Int if even x; otherwise Bool
 Type of X: Int
 ```
 
-+------------+
-| Question 2 |
-+------------+
+## Question 2
 
 Consider the following abstract syntax for describing actions on an account. The operation Deposit adds money to the balance while Withdraw takes money off the balance, but no more than is available in the account, i.e., the balance must not become negative. The Fee operation deducts a fee of 1 from the account, and finally, Sequ a1 a2 first performs the account action a1 and then the action a2.
 
@@ -49,9 +47,7 @@ sem Fee b = b - 1
 sem (Sequ a1 a2) b = sem a2 $ sem a1 b
 ```
 
-+------------+
-| Question 3 |
-+------------+
+## Question 3
 
 Consider the following syntax excerpt from a language for computing with numbers and lists of numbers.
 
@@ -64,9 +60,7 @@ Which of the following type definitions for D are appropriate semantic domains f
 - [C]: `data Val = I Int | L [Int]`, `type D = Maybe Val`
 - [C]: `data D = I Int | L [Int] | Error`
 
-+------------+
-| Question 4 |
-+------------+
+## Question 4
 
 Determine the type/behavior of the following expressions under static and dynamic typing. 
 
@@ -81,9 +75,7 @@ Static: static: [Bool] dynamic: [Bool] variables: x :: Int
 Dynamic: returns empty list or error (depending on how implemented tail works)
 ```
 
-+------------+
-| Question 5 |
-+------------+
+## Question 5
 
 Consider the following excerpt from a context-free grammar for statements.
 
@@ -98,10 +90,7 @@ Correct
 data Stmt = While Exp Stmt
 			| If Exp Exp Stmt
 ```
-
-+------------+
-| Question 6 |
-+------------+
+## Question 6
 
 Determine the type/behavior of the following expressions under static and dynamic typing. 
 
@@ -117,9 +106,7 @@ Static Typing: Type Error [Bool] cannot be treated as bool.
 Dynamic Typing:  Error [Bool] cannot be treated as bool.
 ```
 
-+------------+
-| Question 7 |
-+------------+
+## Question 7
 
 Determine the type/behavior of the following expressions under static and dynamic typing. 
 
@@ -134,9 +121,7 @@ Dynamic: if type(x) == Int, _ else Type Error : invalid operation for type(x) '+
 -> assumed type of x is Int
 ```
 
-+------------+
-| Question 8 |
-+------------+
+## Question 8
 
 Determine the type/behavior of the following expressions under static and dynamic typing. 
 
@@ -150,9 +135,7 @@ Dynamic: if type(x) != Int: Type Error (invalud type for div), else _
 -> assumed type of x is int
 ```
 
-+------------+
-| Question 9 |
-+------------+
+## Question 9
 
 Which sentences can be derived with the following grammar?
 
@@ -165,9 +148,7 @@ Which sentences can be derived with the following grammar?
 - aabb
 - aabaa
 
-+-------------+
-| Question 10 |
-+-------------+
+## Question 10
 
 Consider the following abstract syntax for a language for non-nested integer lists, that is, lists that can only contain integers and not other lists. With N we represent integer constants. The constant Empty denotes an empty list, and the operation Cons adds an integer (given as the first argument) to a list. We can extract the first element of a list using Head, and the operation Length represents a function to compute the length of a list.
 
