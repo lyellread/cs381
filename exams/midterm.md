@@ -40,7 +40,6 @@ The structure for the first case is spelled out as an example..
 Answer: 
 
 ```hs
-Correct
 sem :: Action -> Balance -> Balance
 sem (Deposit x) b = b + x
 sem (Withdraw x) b
@@ -127,7 +126,6 @@ Determine the type/behavior of the following expressions under static and dynami
 `(head [x,True]) + 1`
 
 ```
-Correct
 Assumption: x cannot be expanded into list, and is a typed object, such as Int, Bool. 
 Assumption: head here has signature [a] -> a
 
