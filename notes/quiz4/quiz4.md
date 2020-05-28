@@ -82,4 +82,3 @@ contains(fridge, mouse).
 
 ### Inner Prolog Functioning 
 - this is tough. refer to slides. 
-
