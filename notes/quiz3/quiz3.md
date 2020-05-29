@@ -1,4 +1,4 @@
-# Quiz 4 Learning Notes
+# Quiz 3 Learning Notes
 
 Scope: all locations in a program where a symbol is visible
 
