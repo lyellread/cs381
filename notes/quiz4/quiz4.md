@@ -9,7 +9,7 @@
 
 #### Facts, Rules and Prolog
 ```
-For All X: Hunam(x) --> Mortal(x) <-- Rule 			\
+For All X: Human(x) --> Mortal(x) <-- Rule 			\
 Human(Socrates)					  <-- Fact 			,`-> Prolog Program
 Therefore: Mortal(Socrates)		  <-- Goal / Query  ---> Program Execution
 ```
