@@ -5,6 +5,7 @@ Static: Type Error
 Dynamic: Int if x=3, else Type Error
 
 2. if x<2 then even x else x
+
 Type x: Int
 Static: Type Error
 Dynamic: Bool if x < 2, else Int
@@ -37,7 +38,7 @@ Dynamic: Int if fst x \= 1, else Type Error
 
 type x: Bool
 static: Type Error
-dynamic: Type ERror
+dynamic: Type Error
 
 8. (head [x,True]) + 1
 
@@ -45,7 +46,7 @@ type x: Int
 Static: Type Error
 Dynamic: Int
 
-9. head [1 `div x, x]
+9. head [1 `div` x, x]
 
 type x: Int
 Static: Int
