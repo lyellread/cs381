@@ -102,27 +102,37 @@ Type of x: Int
 
 (a) if x<2 then even x else x
 > Static: Type Error: even returns bool, while else x returns int
+
 > Dynamic: if x<2 then Type Error else Int
+
 > Type of x: Int
 
 (b) if head x then x else tail x
 > Static: [Bool]
+
 > Dynamic: [Bool]
+
 > Type of x: [Bool]
 
 (c) if x then x+1 else x-1
 > Static: Type Error: if requires bool, +/- require Int
+
 > Dynamic: Type Error: can do neither + nor - on Bool
+
 > Type of x: Bool
 
 (d) if False then "Hello" else x
 > Static: String
+
 > Dynamic: String
+
 > Type of x: String
 
 (e) if fst x==1 then x+1 else fst x
 > Static: Type Error
+
 > Dynamic: if fst x == 1 then Type Error else Int
+
 > Type of x: Tuple (Int, a)
 
 ## Question 6
@@ -140,9 +150,15 @@ data Expr = Fls
 Which of the following expressions should be considered to be not type correct by a type checker for that language?
 
 > -> First (First (Pair Fls Tru)) 	: cant get first of Tru as First expects ()
+
 > -> Swap (Pair Tru) 					: Incomplete Pair
+
 > -> First (Fls Tru)					: No Constructor
+
 > -> Swap (First (Pair Fls Tru))		: Cant swap item
+
 > Swap (Pair Tru (Pair Tru Fls))
+
 > Swap (Swap (Pair Fls Tru))
-First (Swap (Pair Fls Tru))
+
+> First (Swap (Pair Fls Tru))
