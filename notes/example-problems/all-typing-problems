@@ -1,0 +1,82 @@
+1. if x=3 then x+1 else not x
+
+type x: Int
+Static: Type Error
+Dynamic: Int if x=3, else Type Error
+
+2. if x<2 then even x else x
+Type x: Int
+Static: Type Error
+Dynamic: Bool if x < 2, else Int
+
+3. if head x then x else tail x
+
+Type x: [Bool]
+Static: [Bool]
+Dynamic: [Bool]
+
+4. if x then x+1 else x-1
+
+type x: Bool
+Static: Type Error
+Dynamic: Type Error
+
+5. if False then "hello" else x
+
+type x: String
+Static: String
+Dynamic: String
+
+6. if fst x==1 then x+1 else fst x
+
+type x: (Int, a)
+Static: Type Error
+Dynamic: Int if fst x \= 1, else Type Error
+
+7. not (tail [x,True])
+
+type x: Bool
+static: Type Error
+dynamic: Type ERror
+
+8. (head [x,True]) + 1
+
+type x: Int
+Static: Type Error
+Dynamic: Int
+
+9. head [1 `div x, x]
+
+type x: Int
+Static: Int
+Dynamic: Int 
+
+10. if tail x==[] then 3:x else 3+x
+
+type x: [Int]
+Static: Type Error
+Dynamic: [Int] if tail x==[], else Type Error
+
+11. if x then x+1 else x
+
+type x: Bool
+Static: Type Error
+Dynamic: Bool if x=False, else Type Error
+
+12. tail [even x]
+
+Type x: Int
+Static: [Bool]
+Dynamic: [Bool]
+
+13. if even x then x else even (x+1)
+
+type x: Int
+Static: Type Error
+Dynamic: Int if even x == True else Bool
+
+14. if f(3) then 3 else True
+
+type f: f :: Int --> Bool
+Static: Type Error
+Dynamic: Int if f(3) == True, else Bool
