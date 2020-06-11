@@ -508,7 +508,9 @@ data Stmt = While Exp Stmt
 
 -- Num is probably defined somewhere else
 -- exp and stmt are nonterminals, so we make data types for them
-```# Quiz 3 Learning Notes
+```
+
+# Quiz 3 Learning Notes
 
 Scope: all locations in a program where a symbol is visible
 
