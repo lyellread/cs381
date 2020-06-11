@@ -145,4 +145,4 @@ Which of the following expressions should be considered to be not type correct b
 > -> Swap (First (Pair Fls Tru))		: Cant swap item
 > Swap (Pair Tru (Pair Tru Fls))
 > Swap (Swap (Pair Fls Tru))
-> First (Swap (Pair Fls Tru))
+First (Swap (Pair Fls Tru))
