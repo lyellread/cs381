@@ -1,0 +1,3 @@
+[submodule "homework"]
+	path = homework
+	url = git@github.com:kendrea/cs381-sp2020.git
